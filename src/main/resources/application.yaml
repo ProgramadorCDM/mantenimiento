@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/MANTENIMIENTO
+    username: postgres
+    password: cdm
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+    open-in-view: false
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 10MB
