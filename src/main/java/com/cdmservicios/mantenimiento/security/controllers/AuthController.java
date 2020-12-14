@@ -138,6 +138,7 @@ public class AuthController {
                         Role supRole = roleRepository.findAllByName(ERole.ROLE_SUPERVISOR)
                                 .orElseThrow(() -> new RuntimeException("Error: Rol no encontrado."));
                         roles.add(supRole);
+                        break;
                     default:
                         Role userRole = roleRepository.findAllByName(ERole.ROLE_USER)
                                 .orElseThrow(() -> new RuntimeException("Error: Rol no encontrado."));
