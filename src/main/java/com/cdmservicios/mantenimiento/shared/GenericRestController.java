@@ -1,5 +1,8 @@
 package com.cdmservicios.mantenimiento.shared;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -28,12 +31,24 @@ public abstract class GenericRestController<T, ID extends Serializable> {
     }
 
     @GetMapping("/all")
+    @ApiOperation(value = "Listar Entidades", notes = "servicio para listar todas las Entidades")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Entidades Listadas Correctamente"),
+            @ApiResponse(code = 401, message = "Usuario No Autorizado"),
+            @ApiResponse(code = 403, message = "Solicitud prohibida por el servidor"),
+            @ApiResponse(code = 404, message = "Entidad no encontrada")})
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<T> getAll() {
         return serviceAPI.getAll();
     }
 
     @GetMapping("/{id}")
+    @ApiOperation(value = "Obtener una Entidad", notes = "servicio para obtener una Entidad")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Entidad encontrada correctamente"),
+            @ApiResponse(code = 401, message = "Usuario No Autorizado"),
+            @ApiResponse(code = 403, message = "Solicitud prohibida por el servidor"),
+            @ApiResponse(code = 404, message = "Entidad no encontrada")})
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<?> find(@PathVariable ID id) {
         T entity =  serviceAPI.getById(id);
@@ -42,6 +57,12 @@ public abstract class GenericRestController<T, ID extends Serializable> {
     }
 
     @PostMapping("/save")
+    @ApiOperation(value = "Crear/Editar una Entidad", notes = "servicio para crear o editar entidades")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Entidad creada correctamente"),
+            @ApiResponse(code = 401, message = "Usuario No Autorizado"),
+            @ApiResponse(code = 403, message = "Solicitud prohibida por el servidor"),
+            @ApiResponse(code = 404, message = "Entidad no encontrada")})
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<?> save(@Valid @RequestBody T entity, BindingResult result) {
         if (result.hasErrors()) {
@@ -51,6 +72,12 @@ public abstract class GenericRestController<T, ID extends Serializable> {
     }
 
     @GetMapping("/delete/{id}")
+    @ApiOperation(value = "Eliminar una Entidad", notes = "servicio para eliminar entidades")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Entidad eliminada correctamente"),
+            @ApiResponse(code = 401, message = "Usuario No Autorizado"),
+            @ApiResponse(code = 403, message = "Solicitud prohibida por el servidor"),
+            @ApiResponse(code = 404, message = "Entidad no encontrada")})
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<?> delete(@PathVariable ID id) {
         T entity = serviceAPI.getById(id);
