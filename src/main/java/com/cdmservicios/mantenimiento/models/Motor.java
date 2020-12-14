@@ -4,6 +4,8 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "motores")
@@ -16,9 +18,11 @@ public class Motor {
     private String idMotor;
 
     @Column
+    @NotBlank
     private String marca;
 
     @Column
+    @NotBlank
     private String modelo;
 
     @Column
@@ -28,6 +32,7 @@ public class Motor {
     private String clase;
 
     @Column
+    @NotBlank
     private String fase;
 
     @Column
@@ -43,18 +48,23 @@ public class Motor {
     private String fs;
 
     @Column
+    @NotBlank
     private String hp;
 
     @Column
+    @NotBlank
     private String rpm;
 
     @Column
+    @NotBlank
     private String voltaje;
 
     @Column
+    @NotBlank
     private String amperaje;
 
     @Column
+    @NotBlank
     private String frecuencia;
 
     @Column
@@ -63,6 +73,7 @@ public class Motor {
     @Column
     private String kw;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @NotNull
+    @OneToOne
     private Equipo equipo;
 }

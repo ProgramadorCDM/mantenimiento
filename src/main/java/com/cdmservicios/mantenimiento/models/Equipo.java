@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "equipos")
@@ -13,12 +14,15 @@ import javax.persistence.Table;
 public class Equipo {
 
     @Id
+    @NotBlank
     private String code;
 
     @Column
+    @NotBlank
     private String nombre;
 
     @Column
+    @NotBlank
     private String section;
 
     @Column
