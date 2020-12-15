@@ -13,11 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/equipos")
 @Api(tags = "equipo")
 public class EquipoRestController extends GenericRestController<Equipo, String> {
-
-
     public EquipoRestController(EquipoServiceAPI serviceAPI) {
         super(serviceAPI);
     }
-
-
 }
