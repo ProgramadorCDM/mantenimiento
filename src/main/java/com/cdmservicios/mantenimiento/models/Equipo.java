@@ -58,4 +58,7 @@ public class Equipo {
     @Column
     private String kw;
 
+    @Column
+    private String description;
+
 }
