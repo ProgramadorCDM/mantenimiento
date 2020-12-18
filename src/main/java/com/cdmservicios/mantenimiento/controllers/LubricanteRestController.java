@@ -3,7 +3,6 @@ package com.cdmservicios.mantenimiento.controllers;
 import com.cdmservicios.mantenimiento.models.Lubricante;
 import com.cdmservicios.mantenimiento.services.apis.LubricanteServiceAPI;
 import com.cdmservicios.mantenimiento.shared.GenericRestController;
-import com.cdmservicios.mantenimiento.shared.GenericServiceAPI;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -35,9 +34,7 @@ public class LubricanteRestController extends GenericRestController<Lubricante, 
             @ApiResponse(code = 404, message = "Entidad no encontrada")})
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<?> findByEquipo(@PathVariable String code) {
-        Lubricante entity = this.serviceAPI.findByEquipo(code);
-        if (entity == null) return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
-        return new ResponseEntity<>(entity, HttpStatus.OK);
+        return new ResponseEntity<>(this.serviceAPI.findByEquipo(code), HttpStatus.OK);
     }
 
 }

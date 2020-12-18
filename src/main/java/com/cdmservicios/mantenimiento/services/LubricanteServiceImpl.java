@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class LubricanteServiceImpl extends GenericServiceImplement<Lubricante, String> implements LubricanteServiceAPI {
@@ -26,8 +26,7 @@ public class LubricanteServiceImpl extends GenericServiceImplement<Lubricante, S
 
     @Override
     @Transactional
-    public Lubricante findByEquipo(String code) {
-        Optional<Lubricante> optional = repository.findByEquipo(code);
-        return optional.orElse(null);
+    public List<Lubricante> findByEquipo(String code) {
+        return repository.findByEquipo(code);
     }
 }
