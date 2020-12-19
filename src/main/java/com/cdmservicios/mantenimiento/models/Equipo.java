@@ -1,11 +1,9 @@
 package com.cdmservicios.mantenimiento.models;
 
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -60,5 +58,13 @@ public class Equipo {
 
     @Column
     private String description;
+
+    @ColumnDefault("false")
+    private Boolean dadoBaja;
+
+    @PrePersist
+    public void ponerFalse(){
+        this.dadoBaja = false;
+    }
 
 }
