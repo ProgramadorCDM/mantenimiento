@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "instrucciones")
+@Table(name = "instrucciones",uniqueConstraints = {
+        @UniqueConstraint(columnNames = "equipo_code")})
 @Data
 public class Instruction {
 
