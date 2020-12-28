@@ -28,4 +28,7 @@ public class Evento {
 
     @Column
     private  String url;
+
+    @OneToOne
+    private Actividad actividad;
 }
