@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "actividades")
@@ -24,7 +25,7 @@ public class Actividad {
     @Column
     private String descriptionActividad;
 
-    @NotBlank
+    @NotNull
     @Column
-    private String frecuenciaActividad;
+    private Long frecuenciaActividad;
 }
