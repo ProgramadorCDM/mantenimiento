@@ -1,6 +1,7 @@
 package com.cdmservicios.mantenimiento.models;
 
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -31,4 +32,7 @@ public class Evento {
 
     @OneToOne
     private Actividad actividad;
+
+    @ColumnDefault("false")
+    private Boolean cumplido;
 }

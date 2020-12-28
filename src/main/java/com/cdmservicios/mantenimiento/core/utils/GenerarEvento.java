@@ -28,6 +28,7 @@ public class GenerarEvento {
             evento.setStart(fecha);
             evento.setUrl("");
             evento.setActividad(actividad);
+            evento.setCumplido(false);
             eventos.add(evento);
             fecha = fecha.plusDays(actividad.getFrecuenciaActividad());
         } while (fecha.getYear() == year);
